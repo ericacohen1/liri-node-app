@@ -62,7 +62,12 @@ function spotifyThisSong() {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log(data);
+        // console.log(data);
+        // console.log(data.tracks.items[0])
+        console.log("Artist:" + data.tracks.items[0].artists[0].name);
+        console.log("Song Name:" +data.tracks.items[0].name);
+        console.log("URL:" +data.tracks.items[0].uri);
+        console.log("Album Name:" +data.tracks.items[0].album.name);
     });
 };
 
