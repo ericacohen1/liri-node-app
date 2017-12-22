@@ -76,30 +76,38 @@ function spotifyThisSong() {
 };
 
 function movieThis() {
-
-    if (movieName === undefined) {
-        movieName === "Mr. Nobody";
-    } else {
-        movieName === process.argv[3];
-    }
-
-
     var movieName = process.argv[3];
+    // if (!movieName) {
+    //     movieName === "Mr. Nobody";
+    // }
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-    request(queryUrl, function(error, response, body) {
+    request(queryUrl, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-           console.log("Movie Title: " + JSON.parse(body).Title);
-           console.log("Year: " + JSON.parse(body).Year);
-           console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
-           console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
-           console.log("Country produced: " + JSON.parse(body).Country);
-           console.log("Language: " + JSON.parse(body).Language);
-           console.log("Plot: " + JSON.parse(body).Plot);
-           console.log("Actors: " + JSON.parse(body).Actors);
-        } 
-      });
+            console.log("Movie Title: " + JSON.parse(body).Title);
+            console.log("Year: " + JSON.parse(body).Year);
+            console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+            console.log("Country produced: " + JSON.parse(body).Country);
+            console.log("Language: " + JSON.parse(body).Language);
+            console.log("Plot: " + JSON.parse(body).Plot);
+            console.log("Actors: " + JSON.parse(body).Actors);
+        }
+    });
 };
 
 function doWhatItSays() {
-
+    var fs = require("fs");
+    // The code will store the contents of the reading inside the variable "data"
+    fs.readFile("random.txt", "utf8", function(error, data) {
+      // If the code experiences any errors it will log the error to the console.
+      if (error) {
+        return console.log(error);
+      } 
+      // We will then print the contents of data
+      console.log(data);
+      // Then split it by commas (to make it more readable)
+      var dataArr = data.split(",");
+      // We will then re-display the content as an array for later use.
+      console.log(dataArr);
+    });
 };
