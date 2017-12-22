@@ -77,10 +77,12 @@ function spotifyThisSong() {
 
 function movieThis() {
     var movieName = process.argv[3];
-    // if (!movieName) {
-    //     movieName === "Mr. Nobody";
-    // }
+    if (!movieName) {
+        // single = is the assignment operator
+        movieName = "Mr. Nobody";
+    }
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+    console.log(queryUrl);
     request(queryUrl, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             console.log("Movie Title: " + JSON.parse(body).Title);
